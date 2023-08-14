@@ -9,7 +9,7 @@ import Settings from './components/Settings/Settings';
 import style from './components/Content/Content.module.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-function App() {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className = "app-wrapper">
@@ -17,8 +17,8 @@ function App() {
         <NavBar />
         <div className={style.content}>
           <Routes>
-            <Route path = '/Content' element = {<Content/>}/>
-            <Route path = '/Dialogs' element = {<Dialogs/>} />
+            <Route path = '/Content' element = {<Content postsData={props.postsData}/>}/>
+            <Route path = '/Dialogs/*' element = {<Dialogs dialogsData={props.dialogsData} messages={props.messages}/>} />
             <Route path = '/News' element = {<News/>}/>
             <Route path = '/Music' element = {<Music/>} />
             <Route path = '/Settings' element = {<Settings/>} />
