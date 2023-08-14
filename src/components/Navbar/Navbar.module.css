@@ -1,0 +1,26 @@
+.navigation_menu {
+    grid-area: n;
+    background-color: burlywood;
+  }
+  
+  .navigation_list {
+    padding: 0;
+  }
+  
+  .navigation_item {
+    list-style: none;
+    
+  }
+
+  .link_item {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    
+  }
+
+  .active {
+    color: red;
+    font-size: 20px;
+    text-decoration: none;
+  }
