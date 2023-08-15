@@ -7,6 +7,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import style from './components/Content/Content.module.css'
+import Friends from './components/Friends/Friends';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 const App = (props) => {
@@ -19,9 +20,10 @@ const App = (props) => {
           <Routes>
             <Route path = '/Content' element = {<Content state={props.stateData.profile}/>}/>
             <Route path = '/Dialogs' element = {<Dialogs state={props.stateData.chat}/>} />
-            <Route path = '/News' element = {<News/>}/>
+            <Route path = '/News' element = {<News/>} />
             <Route path = '/Music' element = {<Music/>} />
             <Route path = '/Settings' element = {<Settings/>} />
+            <Route path = '/Friends' element = {<Friends state={props.stateData.profile}/>} />
           </Routes>
         </div>
       </div>

@@ -11,16 +11,19 @@ function NavBar() {
           </li>
           <li className = {style.navigation_item}>
             <NavLink to = "/Dialogs" className={ navbarPage => navbarPage.isActive ? style.active : style.link_item}>Messages</NavLink>
-            </li>
+          </li>
           <li className = {style.navigation_item}>
             <NavLink to = "/News" className={ navbarPage => navbarPage.isActive ? style.active : style.link_item}>News</NavLink>
-            </li>
+          </li>
           <li className = {style.navigation_item}>
             <NavLink  to= "/Music" className={ navbarPage => navbarPage.isActive ? style.active : style.link_item}>Music</NavLink>
-            </li>
-            <NavLink to = "/Settings" className={ navbarPage => navbarPage.isActive ? style.active : style.link_item}>Settings</NavLink>
+          </li>
           <li className = {style.navigation_item}>
-            </li>
+            <NavLink to = "/Settings" className={ navbarPage => navbarPage.isActive ? style.active : style.link_item}>Settings</NavLink>
+          </li>
+          <li className = {style.navigation_item}>
+            <NavLink to = "/Friends" className={ navbarPage => navbarPage.isActive ? style.active : style.link_item}>Friends</NavLink>
+          </li>
         </ul>
       </nav>
   ) 
