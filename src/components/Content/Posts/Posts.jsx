@@ -11,7 +11,8 @@ const Posts = (props) => {
 
   let addNewPost = () => {
     let newPost = newPostElement.current.value
-    alert(newPost)
+    props.addPost(newPost)
+    newPostElement.current.value = ''
   }
 
   return <div className={style.Posts}>
