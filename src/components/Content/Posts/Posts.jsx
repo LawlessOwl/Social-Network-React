@@ -11,11 +11,12 @@ const Posts = (props) => {
 
   let postChange = () => {
     let text = newPostElement.current.value
-    props.updateNewPostText(text);
+    let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+    props.dispatch(action)
   }
 
   let addNewPost = () => {
-    props.addPost()
+    props.dispatch({type: 'ADD-POST'})
   }
 
   return <div className={style.Posts}>
