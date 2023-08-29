@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderTree = (state) => {
   root.render(
     <React.StrictMode>
-      <App stateData={store.getState()} addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
+      <App stateData={store.getState()} dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>
   );
 }
