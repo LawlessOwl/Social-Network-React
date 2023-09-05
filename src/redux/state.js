@@ -1,5 +1,11 @@
+import profileReducer from "./profileReducer"
+import dialogsReducer from "./dialogsReducer"
+import sidebarReducer from "./sidebarReducer"
+
 const addPost = 'ADD-POST'
 const updateText = 'UPDATE-NEW-POST-TEXT'
+const updateMessage = 'UPDATE-NEW-MESSAGE-BODY'
+const sendMessage = 'SEND-MESSAGE'
 
 let store = {
         _state : {
@@ -29,7 +35,11 @@ let store = {
                 {id: 1, message: 'Hello'},
                 {id: 2, message: 'WTF'},
                 {id: 3, message: "Oh shit i'm sorry"},
-              ]
+            ],
+            newMessageBody: ""
+        },
+        sidebar: {
+
         }
     },
     getState() {
@@ -41,20 +51,10 @@ let store = {
     _callSubscriber() {
     },
     dispatch(action) {
-        if (action.type === "ADD-POST"){
-            let newPost = {
-                id: this._state.profile.postsData.length + 1,
-                message: this._state.profile.newPostText,
-                likesCount: 0,
-                profileIcon: this._state.profile.postsData[0].profileIcon
-            }
-            this._state.profile.postsData.push(newPost);
-            this._state.profile.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-            this._state.profile.newPostText = action.newText
-            this._callSubscriber(this._state)
-        }
+       this._state.profile = profileReducer(this._state.profile, action)
+       this._state.chat = dialogsReducer(this._state.chat, action)
+       this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+       this._callSubscriber(this._state)
     }
 }
 
@@ -62,7 +62,8 @@ export const addPostActionCreator = () => ({type: addPost})
   
 export const updateNewPostTextActionCreator = (text) => ({type: updateText, newText: text})
 
-
+export const sendMessageCreator = () => ({type: sendMessage})
+export const updateNewMessageBodyCreator = (body) => ({type: updateMessage, body: body})
 window.store = store
 
 export default store;
