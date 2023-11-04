@@ -18,19 +18,22 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-   if (action.type === addPost){
-       let newPost = {
-           id: state.postsData.length + 1,
-           message: state.newPostText,
-           likesCount: 0,
-           profileIcon:state.postsData[0].profileIcon
-       }
-      state.postsData.push(newPost);
-       state.newPostText = '';
-   } else if (action.type === updateText) {
-      state.newPostText = action.newText
-   }
-   return state;
+    switch(action.type) {
+        case addPost: 
+            let newPost = {
+                id: state.postsData.length + 1,
+                message: state.newPostText,
+                likesCount: 0,
+                profileIcon:state.postsData[0].profileIcon
+            }
+            state.postsData.push(newPost);
+            state.newPostText = '';
+            return state;
+        case updateText:
+            state.newPostText = action.newText;
+            return state;
+        default: return state;
+    }
 }
 
 export const addPostActionCreator = () => ({type: addPost})
